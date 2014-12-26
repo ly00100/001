@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="#2c3240"
+>
+
+    <TextView 
+        android:id="@+id/textView_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        style="@style/menuText"/>
+    <View  
+   android:layout_width="fill_parent"  
+    android:layout_height="1px" 
+   android:background="@drawable/fengexian"  
+/> 
+    <LinearLayout
+    android:id="@+id/yiban"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" 
+    android:background="#2c3240"
+    android:layout_marginLeft="30dip"
+>
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:src="@drawable/yiban" />
+        
+            <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="已  办" 
+        android:layout_marginLeft="10dip"
+        style="@style/menuText"/>
+        </LinearLayout>
+<View  
+   android:layout_width="fill_parent"  
+    android:layout_height="1px" 
+   android:background="@drawable/fengexian"  
+/>  
+    
+    <LinearLayout
+        android:id="@+id/daiban"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" 
+    android:background="#2c3240"
+    android:layout_marginLeft="30dip"
+>
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:src="@drawable/daiban" />
+        
+            <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="待  办" 
+        android:layout_marginLeft="10dip"
+        style="@style/menuText"/>
+        </LinearLayout>
+<View  
+   android:layout_width="fill_parent"  
+    android:layout_height="1px" 
+   android:background="@drawable/fengexian"  
+/> 
+ 
+</LinearLayout>

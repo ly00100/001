@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"  
+ android:layout_width="fill_parent"  
+ android:layout_height="fill_parent"  
+ android:fadingEdge="vertical">
+ 
+    <LinearLayout 
+        android:background="@color/abs__bright_foreground_holo_dark"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:textSize="20dp"
+        android:textColor="@color/abs__background_holo_light"
+        android:background="@android:color/background_dark"
+        android:gravity="center"
+        android:text="合同基本信息" />
+<LinearLayout
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical" >
+
+
+
+    <TextView
+        android:id="@+id/contract_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="合同名称" />
+
+    <EditText
+        android:id="@+id/editText_contract_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/editbox_background"
+        android:editable="false" />
+
+    <TextView
+        android:id="@+id/contract_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="签订日期" />
+
+    <EditText
+        android:id="@+id/editText_contract_date1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+                android:background="@android:drawable/editbox_background"
+        android:editable="false" />
+
+    <TextView
+        android:id="@+id/contract_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="签订地点" />
+
+    <EditText
+                android:background="@android:drawable/editbox_background"
+        android:id="@+id/editText_contract_address"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:editable="false"/>
+
+    <TextView
+        android:id="@+id/contract_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="合同编号" />
+
+    <EditText
+        android:id="@+id/editText_contract_number"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/editbox_background"
+        android:editable="false" />
+<TextView
+        android:id="@+id/seller"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="出卖人" />
+
+    <EditText
+                android:background="@android:drawable/editbox_background"
+        android:id="@+id/editText_seller"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:editable="false" />
+    
+    <TextView
+        android:id="@+id/buyer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="收买人" />
+
+    <EditText
+                android:background="@android:drawable/editbox_background"
+        android:id="@+id/editText_buyer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:editable="false" />
+    
+    <TextView
+        android:id="@+id/categories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="品种" />
+
+    <EditText
+                android:background="@android:drawable/editbox_background"
+        android:id="@+id/editText_categories"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:editable="false" />
+    
+    <TextView
+        android:id="@+id/execdate1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="执行开始日期" />
+
+    <EditText
+                android:background="@android:drawable/editbox_background"
+        android:id="@+id/editText_execdate1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:editable="false" />
+
+    <TextView
+        android:id="@+id/execdate2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="执行结束日期" />
+
+    <EditText
+                android:background="@android:drawable/editbox_background"
+        android:id="@+id/editText_execdate2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:editable="false" />
+    
+    <TextView
+        android:id="@+id/textView_Ccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="数量" />
+
+    <EditText
+                android:background="@android:drawable/editbox_background"
+        android:id="@+id/editText_Ccount"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:editable="false" >
+    </EditText>
+
+    
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="单价" />
+
+    <EditText
+                android:background="@android:drawable/editbox_background"
+        android:id="@+id/editText_price"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:editable="false" />
+    
+    <TextView
+        android:id="@+id/amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="金额" />
+
+    <EditText
+                android:background="@android:drawable/editbox_background"
+        android:id="@+id/editText_amount"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:editable="false" />
+
+      <TextView
+        android:id="@+id/fulfilway"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="履行方式" />
+
+    <EditText
+                android:background="@android:drawable/editbox_background"
+        android:id="@+id/editText_fulfilway"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:editable="false" />
+
+    
+    
+        <TextView
+        android:id="@+id/massindex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="质量指标" />
+
+    <EditText
+                android:background="@android:drawable/editbox_background"
+        android:id="@+id/editText_massindex"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:editable="false" />
+    
+        <TextView
+        android:id="@+id/deptname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="承办部门" 
+        android:visibility="gone"/>
+
+    <EditText
+                android:background="@android:drawable/editbox_background"
+        android:id="@+id/editText_deptname"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:editable="false" 
+        android:visibility="gone"/>
+    
+     <TextView
+        android:id="@+id/operator1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="经办人" />
+
+    <EditText
+                android:background="@android:drawable/editbox_background"
+        android:id="@+id/editText_operator1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:editable="false" />
+
+    <TextView
+        android:id="@+id/comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="备注" />
+
+    <EditText
+                android:background="@android:drawable/editbox_background"
+        android:id="@+id/editText_comment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:editable="false" />
+
+     <TextView
+        android:id="@+id/attachment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="附件" />
+
+    <TextView
+        android:id="@+id/editText_attachment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+         android:visibility="gone"
+        />
+             <!-- ListView控件 附件列表 -->  
+<LinearLayout
+    android:orientation="vertical"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent"  
+    >  
+     <!-- ListView控件 -->  
+  <ListView
+    android:id="@+id/listActtachment"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" />
+
+ </LinearLayout>
+</LinearLayout>
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:background="@android:color/holo_blue_light"
+    android:gravity="center_horizontal"
+    android:textSize="20dp"
+    android:text="流程信息" />
+
+ <!-- 标题 列表 --> 
+ <LinearLayout
+    android:orientation="horizontal"  
+    android:layout_width="fill_parent"  
+    android:layout_height="wrap_content"  
+    >  
+ <!-- 标题 -->  
+  <TextView
+      android:layout_width="@dimen/buzou"
+      android:layout_height="wrap_content"
+      android:gravity="center_horizontal"
+      android:text="步骤" />
+   
+   <TextView
+       android:layout_width="@dimen/chuliren"
+       android:layout_height="wrap_content"
+       android:gravity="center_horizontal"
+       android:text="处理人" />
+    
+
+  
+        <TextView
+            android:layout_width="@dimen/chulishijian"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="完成时间" />
+    
+  <TextView  
+   android:layout_width="fill_parent"  
+   android:layout_height="wrap_content" 
+   android:gravity="center_horizontal" 
+   android:text="意见"  
+  />  
+
+      </LinearLayout>
+      
+         <!-- ListView控件 -->  
+<LinearLayout
+    android:orientation="vertical"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent"  
+    >  
+     <!-- ListView控件 -->  
+  <ListView
+    android:id="@+id/listLiucheng"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" />
+
+ </LinearLayout>
+          <!-- 意见控件 -->  
+ <LinearLayout
+    android:orientation="vertical"  
+    android:layout_width="match_parent"  
+    android:layout_height="wrap_content"  
+    >
+
+    <TextView
+        android:background="@android:color/holo_blue_light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="20dp"
+        android:text="下一步审批人员" />
+
+    <Spinner
+        android:id="@+id/Spinner_NextSteps"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:clickable="false"/>
+    <TextView
+        android:id="@+id/textView_sp"
+        android:background="@android:color/holo_blue_light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="20dp"
+        android:text="审批意见" />
+      <Spinner android:id="@+id/Spinner01"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"></Spinner>
+    <EditText 
+        android:background="@android:drawable/editbox_background"
+        android:id="@+id/edittext_yijian"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:minLines="3"
+        android:gravity="top"/>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_default"
+        android:text="提  交"
+        android:textSize="28sp" />
+
+</LinearLayout>
+</LinearLayout>
+</ScrollView>  

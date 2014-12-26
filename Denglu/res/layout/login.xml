@@ -1,0 +1,98 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background_login"
+    android:orientation="vertical" >
+"
+<!-- padding 内边距   layout_margin 外边距
+  		android:layout_alignParentTop 布局的位置是否处于顶部 -->
+  		
+  	<RelativeLayout 
+      	android:layout_width="fill_parent"
+      	android:layout_height="wrap_content" >
+
+  		<ImageView
+  		    android:id="@+id/imageView1"
+  		    android:layout_width="wrap_content"
+  		    android:layout_height="wrap_content"
+  		    android:layout_alignParentTop="true"
+  		    android:layout_centerHorizontal="true"
+  		    android:src="@drawable/tubiao" />
+  	    
+  	</RelativeLayout>
+  	
+  	<RelativeLayout
+  	    android:id="@+id/login_div"
+  	    android:layout_width="fill_parent"
+  	    android:layout_height="wrap_content"
+  	    android:layout_margin="15dip"
+  	    android:background="@drawable/background_login_div"
+  	    android:padding="15dip" >
+
+  		<!-- 账号 -->
+
+    	<TextView
+    	    android:id="@+id/login_user_input"
+    	    style="@style/normalText"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:layout_alignParentTop="true"
+    	    android:layout_marginTop="5dp"
+    	    android:text="@string/login_label_username" />
+
+    	<EditText 
+    	    android:background="@android:drawable/editbox_background"
+    		android:id="@+id/username_edit"
+    		android:layout_width="fill_parent"
+    		android:layout_height="50dip"
+    		android:hint="@string/login_username_hint"
+    		android:layout_below="@id/login_user_input"
+    		android:singleLine="true"
+    		android:inputType="text"/>
+      <!-- 密码 text -->
+
+      <TextView
+          android:id="@+id/login_password_input"
+          style="@style/normalText"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/username_edit"
+          android:layout_marginTop="3dp"
+          android:text="@string/login_label_password" />
+
+      <EditText 
+        android:background="@android:drawable/editbox_background"
+      	android:id="@+id/password_edit"
+      	android:layout_width="fill_parent"
+      	android:layout_height="50dip"
+      	android:layout_below="@id/login_password_input"
+      	android:password="true"
+      	android:singleLine="true"
+      	android:inputType="textPassword" />
+      <!-- 登录button -->
+
+  	</RelativeLayout>
+
+  	<CheckBox
+  	    android:id="@+id/checkBox_rmbUserPs"
+  	    android:layout_width="wrap_content"
+  	    android:layout_height="wrap_content"
+  	    android:text="记住用户名及密码" />
+
+  	<RelativeLayout 
+      	android:layout_width="fill_parent"
+      	android:layout_height="wrap_content" >
+
+  	<Button
+  	    android:id="@+id/signin_button"
+  	    android:layout_width="fill_parent"
+  	    android:layout_height="wrap_content"
+  	    android:layout_alignParentLeft="true"
+  	    android:layout_alignParentTop="true"
+  	    android:background="@android:drawable/btn_default"
+  	    android:text="@string/login_label_signin"
+  	    android:textSize="28sp" />
+   
+  	</RelativeLayout>
+
+</LinearLayout>

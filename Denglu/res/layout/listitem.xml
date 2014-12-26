@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:background="@drawable/toolbar_bg"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:id="@+id/tv_title"
+        android:textSize="20sp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        />
+    <TextView
+        android:textSize="12sp"
+        android:id="@+id/tv_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"
+        />
+    
+        <TextView
+        android:id="@+id/item_FlowID"
+        android:textSize="20sp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+                android:visibility="gone"
+        />
+    <TextView
+        android:textSize="12sp"
+        android:id="@+id/item_GroupID"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+                android:visibility="gone"
+        
+        />
+
+        <TextView
+        android:textSize="12sp"
+        android:id="@+id/item_StepID"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+         android:visibility="gone"
+        />
+                <TextView
+        android:textSize="12sp"
+        android:id="@+id/item_TaskID"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+         android:visibility="gone"
+        />
+</LinearLayout>

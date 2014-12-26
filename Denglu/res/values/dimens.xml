@@ -1,0 +1,13 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="shadow_width">16dp</dimen>
+    <dimen name="slidingmenu_offset">150dp</dimen>
+    <dimen name="buzou">56dp</dimen>
+	<dimen name="chuliren">56dp</dimen>
+	<dimen name="shoujianshijian">76dp</dimen>
+	<dimen name="chulishijian">76dp</dimen>
+
+</resources>
