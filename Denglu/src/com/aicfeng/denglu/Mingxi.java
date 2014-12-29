@@ -256,9 +256,17 @@ public class Mingxi extends Activity {
 				Gouzao.setSeller(jsonObject.getString("<seller>k__BackingField"));
 				editText_seller.setText(Gouzao.getSeller());
 				
-				Gouzao.setAttachment(jsonObject.getString("<attachment>k__BackingField"));
+				
 				//editText_attachment.setText("http://"+Common.Date.getIp()+"/"+Gouzao.getAttachment());
-				attachment(Gouzao.getAttachment());
+				if(jsonObject.getString("<attachment>k__BackingField") != "null" && jsonObject.getString("<attachment>k__BackingField") != "")
+				{
+					Gouzao.setAttachment(jsonObject.getString("<attachment>k__BackingField"));
+					attachment(Gouzao.getAttachment());
+				}
+				else
+				{
+					
+				}
 				
 				progressDialog.dismiss();
 				}

@@ -365,7 +365,9 @@
         android:text="审批意见" />
       <Spinner android:id="@+id/Spinner01"
            android:layout_width="fill_parent"
-           android:layout_height="wrap_content"></Spinner>
+           android:layout_height="wrap_content"
+           android:visibility="gone"
+          ></Spinner>
     <EditText 
         android:background="@android:drawable/editbox_background"
         android:id="@+id/edittext_yijian"
