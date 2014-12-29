@@ -240,7 +240,7 @@ public class Mingxi extends Activity {
 				Gouzao.setOperator1(jsonObject.getString("<operator1>k__BackingField"));
 				editText_operator1.setText(Gouzao.getOperator1());
 				
-				if(jsonObject.getString("<price>k__BackingField") != "null" && jsonObject.getString("<price>k__BackingField") != "")
+				if(jsonObject.optString("<price>k__BackingField") != null && jsonObject.optString("<price>k__BackingField") != "")
 				{
 					Gouzao.setPrice(Double.valueOf(jsonObject.getString("<price>k__BackingField")));
 					editText_price.setText(Gouzao.getPrice()+"");
@@ -258,16 +258,9 @@ public class Mingxi extends Activity {
 				
 				
 				//editText_attachment.setText("http://"+Common.Date.getIp()+"/"+Gouzao.getAttachment());
-				if(jsonObject.getString("<attachment>k__BackingField") != "null" && jsonObject.getString("<attachment>k__BackingField") != "")
-				{
-					Gouzao.setAttachment(jsonObject.getString("<attachment>k__BackingField"));
+					Gouzao.setAttachment(jsonObject.optString("<attachment>k__BackingField"));
 					attachment(Gouzao.getAttachment());
-				}
-				else
-				{
 					
-				}
-				
 				progressDialog.dismiss();
 				}
 				catch(Exception e)
@@ -283,22 +276,33 @@ public class Mingxi extends Activity {
 	private void attachment(String attchment) throws UnsupportedEncodingException
 	{
 		List<Map<String,String>> attachment_list = new ArrayList<Map<String,String>>();
-		String[] Attachment_url =attchment.split("\\|");
-		for(int i=0;i<Attachment_url.length;i++)
+		Map<String,String> map;
+		if(!attchment.isEmpty())//判断获取的地址是否为空如果为空则显示无附件
 		{
-			String Attachment_name = Attachment_url[i].substring(Attachment_url[i].lastIndexOf('/')+1);
-			Map<String,String> map =new HashMap<String, String>();
-			
-			String Urlpart = Attachment_url[i].substring(0,Attachment_url[i].lastIndexOf('/')+1);
-			String ChineseName = Attachment_name.substring(0,Attachment_name.indexOf("."));
-			String fileType = Attachment_name.substring(Attachment_name.indexOf("."));
-			String utf_ChineseName = java.net.URLEncoder.encode(ChineseName,"UTF-8");
-			String fileurl =Urlpart+utf_ChineseName+fileType;
-			map.put("Attachment_name", Attachment_name);
-			map.put("Attachment_url", "http://"+Common.Date.getIp()+fileurl);
+			String[] Attachment_url =attchment.split("\\|");
+			for(int i=0;i<Attachment_url.length;i++)
+			{
+				String Attachment_name = Attachment_url[i].substring(Attachment_url[i].lastIndexOf('/')+1);
+				map = new HashMap<String, String>();
+				
+				String Urlpart = Attachment_url[i].substring(0,Attachment_url[i].lastIndexOf('/')+1);
+				String ChineseName = Attachment_name.substring(0,Attachment_name.indexOf("."));
+				String fileType = Attachment_name.substring(Attachment_name.indexOf("."));
+				String utf_ChineseName = java.net.URLEncoder.encode(ChineseName,"UTF-8");
+				String fileurl =Urlpart+utf_ChineseName+fileType;
+				map.put("Attachment_name", Attachment_name);
+				map.put("Attachment_url", "http://"+Common.Date.getIp()+fileurl);
+				attachment_list.add(map);
+			}
+		}
+		else
+		{
+			map = new HashMap<String, String>();
+			map.put("Attachment_name", "无附件");
+			map.put("Attachment_url", "");
 			attachment_list.add(map);
 		}
-	SimpleAdapter simpleAdapter_attachment = new SimpleAdapter(Mingxi.this, attachment_list, R.layout.attachmentitme,
+		SimpleAdapter simpleAdapter_attachment = new SimpleAdapter(Mingxi.this, attachment_list, R.layout.attachmentitme,
                 new String[] { "Attachment_name", "Attachment_url"},
                 new int[] { R.id.attchment_name, R.id.attchment_url}); 
 		listAttachment.setAdapter(simpleAdapter_attachment);
@@ -313,8 +317,15 @@ public class Mingxi extends Activity {
 				long arg3) {
 			Map<String, String> map = (Map<String, String>) arg0.getAdapter().getItem(arg2);//不能直接使用adpte
 			String url = map.get("Attachment_url");
+			if(!url.isEmpty())//地址是否为空如果为空点击没有反应。主要应对无附件的情况
+			{
 			UpdateManager upm = new UpdateManager(Mingxi.this, url);
 			upm.showDownloadDialog(url,"正在下载");
+			}
+			else
+			{
+				
+			}
 		}
 		
 	};
