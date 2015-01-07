@@ -22,7 +22,7 @@ public class Common {
 	
 	static class Date
 	{
-		private static final String IP = "10.2.100.15";
+		private static final String IP = "114.215.84.141";
 
 		public static String getIp() {
 			return IP;
