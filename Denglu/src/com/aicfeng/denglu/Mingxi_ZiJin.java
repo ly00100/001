@@ -180,7 +180,7 @@ public class Mingxi_ZiJin extends Activity {
 					editText_payuser.setText(jsonObject.getString("<payuser>k__BackingField"));
 					editText_userdept.setText(jsonObject.getString("<userdept>k__BackingField"));
 					editText_paydept.setText(jsonObject.getString("<paydept>k__BackingField"));
-					
+					editText_contracId.setText(jsonObject.getString("<contractId>k__BackingField"));
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
