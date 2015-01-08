@@ -16,20 +16,18 @@
         android:textColor="@color/abs__background_holo_light"
         android:background="@android:color/background_dark"
         android:gravity="center"
-        android:text="合同基本信息" />
+        android:text="付款基本信息" />
 <LinearLayout
     android:layout_width="280dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:orientation="vertical" >
 
-
-
     <TextView
         android:id="@+id/contract_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="合同名称" />
+        android:text="付款标题" />
 
     <EditText
         android:id="@+id/editText_paytitle"
@@ -42,10 +40,10 @@
         android:id="@+id/contract_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="签订日期" />
+        android:text="付款单位" />
 
     <EditText
-        android:id="@+id/editText_contract_date1"
+        android:id="@+id/editText_paydept"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
                 android:background="@android:drawable/editbox_background"
@@ -55,11 +53,11 @@
         android:id="@+id/contract_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="签订地点" />
+        android:text="付款银行" />
 
     <EditText
                 android:background="@android:drawable/editbox_background"
-        android:id="@+id/editText_contract_address"
+        android:id="@+id/editText_paybank"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:editable="false"/>
@@ -68,10 +66,10 @@
         android:id="@+id/contract_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="合同编号" />
+        android:text="付款账号" />
 
     <EditText
-        android:id="@+id/editText_contract_number"
+        android:id="@+id/editText_payaccount"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@android:drawable/editbox_background"
@@ -80,11 +78,11 @@
         android:id="@+id/seller"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="出卖人" />
+        android:text="申请部门" />
 
     <EditText
                 android:background="@android:drawable/editbox_background"
-        android:id="@+id/editText_seller"
+        android:id="@+id/editText_userdept"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:editable="false" />
@@ -93,11 +91,11 @@
         android:id="@+id/buyer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="收买人" />
+        android:text="付款日期" />
 
     <EditText
                 android:background="@android:drawable/editbox_background"
-        android:id="@+id/editText_buyer"
+        android:id="@+id/editText_paydate"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:editable="false" />
@@ -106,11 +104,11 @@
         android:id="@+id/categories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="品种" />
+        android:text="付款理由" />
 
     <EditText
                 android:background="@android:drawable/editbox_background"
-        android:id="@+id/editText_categories"
+        android:id="@+id/editText_payreason"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:editable="false" />
@@ -119,11 +117,11 @@
         android:id="@+id/execdate1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="执行开始日期" />
+        android:text="付款金额" />
 
     <EditText
                 android:background="@android:drawable/editbox_background"
-        android:id="@+id/editText_execdate1"
+        android:id="@+id/editText_paymoney"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:editable="false" />
@@ -132,11 +130,11 @@
         android:id="@+id/execdate2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="执行结束日期" />
+        android:text="合同号" />
 
     <EditText
                 android:background="@android:drawable/editbox_background"
-        android:id="@+id/editText_execdate2"
+        android:id="@+id/editText_contracId"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:editable="false" />
@@ -145,11 +143,11 @@
         android:id="@+id/textView_Ccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="数量" />
+        android:text="合同金额" />
 
     <EditText
                 android:background="@android:drawable/editbox_background"
-        android:id="@+id/editText_Ccount"
+        android:id="@+id/editText_contractMoney"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:editable="false" >
@@ -160,11 +158,11 @@
         android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="单价" />
+        android:text="备注" />
 
     <EditText
                 android:background="@android:drawable/editbox_background"
-        android:id="@+id/editText_price"
+        android:id="@+id/editText_note"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:editable="false" />
@@ -173,11 +171,11 @@
         android:id="@+id/amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="金额" />
+        android:text="已经付款金额" />
 
     <EditText
                 android:background="@android:drawable/editbox_background"
-        android:id="@+id/editText_amount"
+        android:id="@+id/editText_havepay"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:editable="false" />
@@ -186,83 +184,24 @@
         android:id="@+id/fulfilway"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="履行方式" />
-
-    <EditText
-                android:background="@android:drawable/editbox_background"
-        android:id="@+id/editText_fulfilway"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:editable="false" />
-
-    
-    
-        <TextView
-        android:id="@+id/massindex"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="质量指标" />
-
-    <EditText
-                android:background="@android:drawable/editbox_background"
-        android:id="@+id/editText_massindex"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:editable="false" />
-    
-        <TextView
-        android:id="@+id/deptname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="承办部门" 
-        android:visibility="gone"/>
-
-    <EditText
-                android:background="@android:drawable/editbox_background"
-        android:id="@+id/editText_deptname"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:editable="false" 
-        android:visibility="gone"/>
-    
-     <TextView
-        android:id="@+id/operator1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="经办人" />
 
     <EditText
                 android:background="@android:drawable/editbox_background"
-        android:id="@+id/editText_operator1"
+        android:id="@+id/editText_payuser"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:editable="false" />
 
-    <TextView
-        android:id="@+id/comment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="备注" />
-
-    <EditText
-                android:background="@android:drawable/editbox_background"
-        android:id="@+id/editText_comment"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:editable="false" />
 
      <TextView
         android:id="@+id/attachment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="附件" />
+        android:text="附件" 
+        android:visibility="gone"/>
 
-    <TextView
-        android:id="@+id/editText_attachment"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-         android:visibility="gone"
-        />
+   
              <!-- ListView控件 附件列表 -->  
 <LinearLayout
     android:orientation="vertical"  

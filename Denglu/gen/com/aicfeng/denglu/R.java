@@ -1246,7 +1246,7 @@ containing a value of this type.
         public static final int abs__textButton=0x7f050025;
         public static final int abs__title=0x7f05002d;
         public static final int abs__up=0x7f05000b;
-        public static final int action_settings=0x7f050099;
+        public static final int action_settings=0x7f0500a5;
         public static final int amount=0x7f05006e;
         public static final int attachment=0x7f05007a;
         public static final int attchment_name=0x7f050044;
@@ -1272,18 +1272,30 @@ containing a value of this type.
         public static final int editText_buyer=0x7f050063;
         public static final int editText_categories=0x7f050065;
         public static final int editText_comment=0x7f050079;
+        public static final int editText_contracId=0x7f0500a0;
+        public static final int editText_contractMoney=0x7f0500a1;
         public static final int editText_contract_address=0x7f05005d;
         public static final int editText_contract_date1=0x7f05005b;
-        public static final int editText_contract_name=0x7f050059;
         public static final int editText_contract_number=0x7f05005f;
         public static final int editText_deptname=0x7f050075;
         public static final int editText_execdate1=0x7f050067;
         public static final int editText_execdate2=0x7f050069;
         public static final int editText_fulfilway=0x7f050071;
+        public static final int editText_havepay=0x7f0500a3;
         public static final int editText_massindex=0x7f050073;
+        public static final int editText_note=0x7f0500a2;
         public static final int editText_operator1=0x7f050077;
+        public static final int editText_payaccount=0x7f05009b;
+        public static final int editText_paybank=0x7f05009a;
+        public static final int editText_paydate=0x7f05009d;
+        public static final int editText_paydept=0x7f050099;
+        public static final int editText_paymoney=0x7f05009f;
+        public static final int editText_payreason=0x7f05009e;
+        public static final int editText_paytitle=0x7f050059;
+        public static final int editText_payuser=0x7f0500a4;
         public static final int editText_price=0x7f05006d;
         public static final int editText_seller=0x7f050061;
+        public static final int editText_userdept=0x7f05009c;
         public static final int edit_query=0x7f050038;
         public static final int edittext_yijian=0x7f050081;
         public static final int empty=0x7f050088;
@@ -1393,6 +1405,7 @@ containing a value of this type.
         public static final int sherlock_spinner_item=0x7f030021;
         public static final int slidingmenumain=0x7f030022;
         public static final int spinner_nextsteps=0x7f030023;
+        public static final int zijin_mingxi=0x7f030024;
     }
     public static final class menu {
         public static final int login=0x7f0d0000;

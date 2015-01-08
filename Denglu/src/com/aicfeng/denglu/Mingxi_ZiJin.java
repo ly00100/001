@@ -1,19 +1,15 @@
 package com.aicfeng.denglu;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONStringer;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -21,31 +17,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.Spanned;
 import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
-import android.text.style.StyleSpan;
-import android.text.style.URLSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.Window;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 
-public class Mingxi extends Activity {
-	
-	private EditText editText_Ccount,editText_amount,editText_arrive,editText_buyer,editText_categories,editText_cbacktype,editText_comment,
-	editText_contract_address,editText_contract_content,editText_contract_date,editText_contract_name,editText_contract_number,
-	editText_deptname,editText_execdate1,editText_execdate2,editText_fulfilway,editText_id,editText_massindex,editText_operator1,editText_price,editText_receiver,
-	editText_seller,editText_signed,editText_station,editText_userid,edittext_yijian;
+public class Mingxi_ZiJin extends Activity {
+	private EditText edittext_yijian,editText_paytitle,editText_paydept,editText_paybank,editText_payaccount,
+	editText_userdept,editText_paydate,editText_payreason,editText_paymoney,editText_contracId,editText_contractMoney,editText_note,
+	editText_havepay,editText_payuser;
 	private ProgressDialog progressDialog;
 	private Button button_submit;
 	private static List<Map<String, String>> list_liucheng = new ArrayList<Map<String,String>>();
@@ -55,93 +43,90 @@ public class Mingxi extends Activity {
 	private Map<String, String> map;
 	private Spinner spinner_JueYi,Spinner_NextSteps;  
 	private String postUrl;
-	private TextView editText_attachment,textView_sp;
+	private TextView textView_sp;
+	
 	@Override
-		protected void onCreate(Bundle savedInstanceState) {
-			super.onCreate(savedInstanceState);
-			requestWindowFeature(Window.FEATURE_NO_TITLE);	
-			setContentView(R.layout.mingxi);
-			
-			findViewbyid();
-			
-			Bundle bundle = this.getIntent().getExtras();
-			bundle.getString("title");
-			bundle.getString("InstanceID");
-			bundle.getString("FlowID");
-			bundle.getString("GroupID");
-			bundle.getString("StepID");
-			bundle.getString("TaskID");
-			bundle.getString("userid");
-			if(bundle.get("listtype").equals("已办列表"))
-			{
-				//已办就获得当前步奏人员并把部分控件变成不可见
-				button_submit.setVisibility(View.GONE);
-				edittext_yijian.setVisibility(View.GONE);
-				spinner_JueYi.setVisibility(View.GONE);
-				textView_sp.setVisibility(View.GONE);
-			}
-			else
-			{
-				//待办获得下一步人员
-				String httprequest_getnextsteps = "http://"+Common.Date.getIp()+"/wcf/wWorkFlowTask.svc/WorkFlowTask/GetNextSteps/"+bundle.getString("FlowID")+"/"+bundle.getString("StepID")+"/"+bundle.getString("GroupID");
-				GetNextSteps getnextsteps = new GetNextSteps(Mingxi.this,httprequest_getnextsteps,Spinner_NextSteps);
-				getnextsteps.getNextSteps();
-			}
-			
-			button_submit.setOnClickListener(new Button_submitListener(bundle));
-			//获得array里面决议的内容放到list里面调用banDinSpinner方法绑定数据源。
-			String[] mItems = getResources().getStringArray(R.array.spinner_yijian);
-			List<String> list_JueYi = new ArrayList<String>(); 
-			list_JueYi = Arrays.asList(mItems);  
-			Common.banDinSpinner (list_JueYi,Mingxi.this,spinner_JueYi);
-			
-			
-			String httprequest = "http://"+Common.Date.getIp()+"/wcf/wWorkFlowTask.svc/WorkFlowTask/getvWaitDetail/"+bundle.getString("InstanceID");
-			progressDialog = ProgressDialog.show(Mingxi.this, "正在加载合同信息...", "请稍后...", true, false);
-			getMingxi(httprequest);
-			
-			String httprequest_liucheng = "http://"+Common.Date.getIp()+"/wcf/wWorkFlowTask.svc/WorkFlowTask/getComment/"+bundle.getString("FlowID")+"/"+bundle.getString("GroupID")+"/"+bundle.getString("StepID");
-			getLiucheng(httprequest_liucheng);
-			
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.zijin_mingxi);
+		
+		findViewbyid();
+		
+		Bundle bundle = this.getIntent().getExtras();
+		bundle.getString("title");
+		bundle.getString("InstanceID");
+		bundle.getString("FlowID");
+		bundle.getString("GroupID");
+		bundle.getString("StepID");
+		bundle.getString("TaskID");
+		bundle.getString("userid");
+		if(bundle.get("listtype").equals("已办列表"))
+		{
+			//已办就获得当前步奏人员并把部分控件变成不可见
+			button_submit.setVisibility(View.GONE);
+			edittext_yijian.setVisibility(View.GONE);
+			spinner_JueYi.setVisibility(View.GONE);
+			textView_sp.setVisibility(View.GONE);
+		}
+		else
+		{
+			//待办获得下一步人员
+			String httprequest_getnextsteps = "http://"+Common.Date.getIp()+"/wcf/wWorkFlowTask.svc/WorkFlowTask/GetNextSteps/"+bundle.getString("FlowID")+"/"+bundle.getString("StepID")+"/"+bundle.getString("GroupID");
+			GetNextSteps getnextsteps = new GetNextSteps(Mingxi_ZiJin.this,httprequest_getnextsteps,Spinner_NextSteps);
+			getnextsteps.getNextSteps();
+		}
+		
+		button_submit.setOnClickListener(new Button_submitListener(bundle));
+		//获得array里面决议的内容放到list里面调用banDinSpinner方法绑定数据源。
+		String[] mItems = getResources().getStringArray(R.array.spinner_yijian);
+		List<String> list_JueYi = new ArrayList<String>(); 
+		list_JueYi = Arrays.asList(mItems);  
+		Common.banDinSpinner (list_JueYi,Mingxi_ZiJin.this,spinner_JueYi);
+		
+		
+		String httprequest = "http://"+Common.Date.getIp()+"/wcf/wWorkFlowTask.svc/WorkFlowTask/getPayDetail/"+bundle.getString("InstanceID");
+		progressDialog = ProgressDialog.show(Mingxi_ZiJin.this, "正在加载付款信息...", "请稍后...", true, false);
+		getMingxi(httprequest);
+		
+		String httprequest_liucheng = "http://"+Common.Date.getIp()+"/wcf/wWorkFlowTask.svc/WorkFlowTask/getComment/"+bundle.getString("FlowID")+"/"+bundle.getString("GroupID")+"/"+bundle.getString("StepID");
+		getLiucheng(httprequest_liucheng);
+		
 
-			
-			listAttachment.setOnItemClickListener(onItemClickListener_attachmentList);
-			
+		
+		listAttachment.setOnItemClickListener(onItemClickListener_attachmentList);
 	}
+
 	
-	
+
 	private void findViewbyid()
 	{
+		editText_paytitle = (EditText)findViewById(R.id.editText_paytitle);
+		editText_paydept = (EditText)findViewById(R.id.editText_paydept);
+		editText_paybank = (EditText)findViewById(R.id.editText_paybank);
+		editText_payaccount = (EditText)findViewById(R.id.editText_payaccount);
+		editText_userdept = (EditText)findViewById(R.id.editText_userdept);
+		editText_paydate = (EditText)findViewById(R.id.editText_paydate);
+		editText_payreason = (EditText)findViewById(R.id.editText_payreason);
+		editText_paymoney = (EditText)findViewById(R.id.editText_paymoney);
+		editText_contracId = (EditText)findViewById(R.id.editText_contracId);
+		editText_contractMoney = (EditText)findViewById(R.id.editText_contractMoney);
+		editText_note = (EditText)findViewById(R.id.editText_note);
+		editText_havepay = (EditText)findViewById(R.id.editText_havepay);
+		editText_payuser = (EditText)findViewById(R.id.editText_payuser);
+		
+
+		button_submit = (Button)findViewById(R.id.button1);
 		textView_sp = (TextView)findViewById(R.id.textView_sp);
 		listAttachment = (ListView)findViewById(R.id.listActtachment);
 		Spinner_NextSteps = (Spinner)findViewById(R.id.Spinner_NextSteps);
 		edittext_yijian = (EditText)findViewById(R.id.edittext_yijian);
 		spinner_JueYi = (Spinner)findViewById(R.id.Spinner01);
 		listLiucheng = (ListView)findViewById(R.id.listLiucheng);
-		editText_Ccount = (EditText)findViewById(R.id.editText_Ccount);
-		editText_amount = (EditText)findViewById(R.id.editText_amount);
-		editText_buyer = (EditText)findViewById(R.id.editText_buyer);
-		editText_categories = (EditText)findViewById(R.id.editText_categories);
-		editText_comment = (EditText)findViewById(R.id.editText_comment);
-		editText_contract_address = (EditText)findViewById(R.id.editText_contract_address);
-		editText_contract_date = (EditText)findViewById(R.id.editText_contract_date1);
-		editText_contract_name = (EditText)findViewById(R.id.editText_paytitle);
-		editText_contract_number = (EditText)findViewById(R.id.editText_contract_number);
-		editText_deptname = (EditText)findViewById(R.id.editText_deptname);
-		editText_execdate1 = (EditText)findViewById(R.id.editText_execdate1);
-		editText_execdate2 = (EditText)findViewById(R.id.editText_execdate2);
-		editText_fulfilway = (EditText)findViewById(R.id.editText_fulfilway);
-		editText_massindex = (EditText)findViewById(R.id.editText_massindex);
-		editText_operator1 = (EditText)findViewById(R.id.editText_operator1);
-		editText_price = (EditText)findViewById(R.id.editText_price);
-		//editText_receiver = (EditText)findViewById(R.id.editText_receiver);
-		editText_seller = (EditText)findViewById(R.id.editText_seller);
-		editText_attachment = (TextView)findViewById(R.id.editText_attachment);
-		button_submit = (Button)findViewById(R.id.button1);
 	}
 	
-	private  void getMingxi( final String httprequest)
-	{
+	
+	private void getMingxi(final String httprequest) {
 		new Thread()
 		{
 			public void run()
@@ -171,110 +156,39 @@ public class Mingxi extends Activity {
 			if(result.contains("timed out"))
 			{
 				progressDialog.dismiss();
-				Common.showDialog(Mingxi.this, 2);
+				Common.showDialog(Mingxi_ZiJin.this, 2);
 			}
 			else if (result.contains("请求失败"))
 			{
 				progressDialog.dismiss();
-				Common.showDialog(Mingxi.this, 4);
+				Common.showDialog(Mingxi_ZiJin.this, 4);
 			}
 			else
 			{
-				try
-				{
-				JSONObject jsonObject=new JSONObject(result);
-				
-				Gouzao.setCcount(jsonObject.getString("<Ccount>k__BackingField"));
-				editText_Ccount.setText(Gouzao.getCcount());
-				
-				if(jsonObject.getString("<amount>k__BackingField") !="null" && jsonObject.getString("<amount>k__BackingField") !="" )
-				{
-					java.text.NumberFormat nf = java.text.NumberFormat.getInstance();   
-					nf.setGroupingUsed(false);  
-					Gouzao.setAmount(Double.valueOf(jsonObject.getString("<amount>k__BackingField")));
-					editText_amount.setText(nf.format(Double.valueOf(jsonObject.getString("<amount>k__BackingField"))));
-				}
-				else
-				{
-					editText_amount.setText("");
-				}
-				
-				Gouzao.setBuyer(jsonObject.getString("<buyer>k__BackingField"));
-				editText_buyer.setText(jsonObject.getString("<buyer>k__BackingField"));
-				
-				Gouzao.setCategories(jsonObject.getString("<categories>k__BackingField"));
-				editText_categories.setText(Gouzao.getCategories());
-				
-				
-//				
-				Gouzao.setComment(jsonObject.getString("<comment>k__BackingField"));
-				editText_comment.setText(Gouzao.getComment());
-				
-				Gouzao.setContract_address(jsonObject.getString("<contract_address>k__BackingField"));
-				editText_contract_address.setText(Gouzao.getContract_address());
-//				
-
-				
-				Gouzao.setContract_date(jsonObject.getString("<contract_date>k__BackingField"));
-				editText_contract_date.setText(Gouzao.getContract_date());
-//				
-				Gouzao.setContract_name(jsonObject.getString("<contract_name>k__BackingField"));
-				editText_contract_name.setText(Gouzao.getContract_name());
-//				
-				Gouzao.setContract_number(jsonObject.getString("<contract_number>k__BackingField"));
-				editText_contract_number.setText(Gouzao.getContract_number());
-				
-				Gouzao.setDeptname(jsonObject.getString("<deptname>k__BackingField"));
-				editText_deptname.setText(Gouzao.getDeptname());
-				
-				Gouzao.setExecdate1(jsonObject.getString("<execdate1>k__BackingField"));
-				editText_execdate1.setText(Gouzao.getExecdate1());
-				
-				Gouzao.setExecdate2(jsonObject.getString("<execdate2>k__BackingField"));
-				editText_execdate2.setText(Gouzao.getExecdate2());
-				
-				Gouzao.setFulfilway(jsonObject.getString("<fulfilway>k__BackingField"));
-				editText_fulfilway.setText(Gouzao.getFulfilway());
-				
-				Gouzao.setMassindex(jsonObject.getString("<massindex>k__BackingField"));
-				editText_massindex.setText(Gouzao.getMassindex());
-				
-				Gouzao.setOperator1(jsonObject.getString("<operator1>k__BackingField"));
-				editText_operator1.setText(Gouzao.getOperator1());
-				
-				if(jsonObject.optString("<price>k__BackingField") != null && jsonObject.optString("<price>k__BackingField") != "")
-				{
-					Gouzao.setPrice(Double.valueOf(jsonObject.getString("<price>k__BackingField")));
-					editText_price.setText(Gouzao.getPrice()+"");
-				}
-				else
-				{
-					Gouzao.setPrice(0);
-					editText_price.setText(0+"");
-				}
-//				Gouzao.setReceiver(jsonObject.getString("<receiver>k__BackingField"));
-//				editText_receiver.setText(Gouzao.getReceiver());
-				
-				Gouzao.setSeller(jsonObject.getString("<seller>k__BackingField"));
-				editText_seller.setText(Gouzao.getSeller());
-				
-				
-				//editText_attachment.setText("http://"+Common.Date.getIp()+"/"+Gouzao.getAttachment());
-					Gouzao.setAttachment(jsonObject.optString("<attachment>k__BackingField"));
-					attachment(Gouzao.getAttachment());
+				try {
+					JSONObject jsonObject=new JSONObject(result);
+					//从接口取到的值赋值给控件。
+					editText_contractMoney.setText(jsonObject.getString("<contractMoney>k__BackingField"));
+					editText_havepay.setText(jsonObject.getString("<havepay>k__BackingField"));
+					editText_note.setText(jsonObject.getString("<note>k__BackingField"));
+					editText_payaccount.setText(jsonObject.getString("<payaccount>k__BackingField"));
+					editText_paybank.setText(jsonObject.getString("<paybank>k__BackingField"));
+					editText_paydate.setText(jsonObject.getString("<paydate>k__BackingField"));
+					editText_paymoney.setText(jsonObject.getString("<paymoney>k__BackingField"));
+					editText_payreason.setText(jsonObject.getString("<payreason>k__BackingField"));
+					editText_paytitle.setText(jsonObject.getString("<paytitle>k__BackingField"));
+					editText_payuser.setText(jsonObject.getString("<payuser>k__BackingField"));
+					editText_userdept.setText(jsonObject.getString("<userdept>k__BackingField"));
+					editText_paydept.setText(jsonObject.getString("<paydept>k__BackingField"));
 					
-				progressDialog.dismiss();
-				}
-				catch(Exception e)
-				{
-					progressDialog.dismiss();
-					Common.showDialog(Mingxi.this, e.toString());
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
-			
 		}
 	};
-	//将附件名称和附件地址填充到附件list中
+	
 	private void attachment(String attchment) throws UnsupportedEncodingException
 	{
 		List<Map<String,String>> attachment_list = new ArrayList<Map<String,String>>();
@@ -304,7 +218,7 @@ public class Mingxi extends Activity {
 			map.put("Attachment_url", "");
 			attachment_list.add(map);
 		}
-		SimpleAdapter simpleAdapter_attachment = new SimpleAdapter(Mingxi.this, attachment_list, R.layout.attachmentitme,
+		SimpleAdapter simpleAdapter_attachment = new SimpleAdapter(Mingxi_ZiJin.this, attachment_list, R.layout.attachmentitme,
                 new String[] { "Attachment_name", "Attachment_url"},
                 new int[] { R.id.attchment_name, R.id.attchment_url}); 
 		listAttachment.setAdapter(simpleAdapter_attachment);
@@ -321,7 +235,7 @@ public class Mingxi extends Activity {
 			String url = map.get("Attachment_url");
 			if(!url.isEmpty())//地址是否为空如果为空点击没有反应。主要应对无附件的情况
 			{
-			UpdateManager upm = new UpdateManager(Mingxi.this, url);
+			UpdateManager upm = new UpdateManager(Mingxi_ZiJin.this, url);
 			upm.showDownloadDialog(url,"正在下载");
 			}
 			else
@@ -393,7 +307,7 @@ public class Mingxi extends Activity {
 		{
 			if(msg.what == 1)
 			{
-				mSimpleAdapter = new SimpleAdapter(Mingxi.this, list_liucheng, R.layout.shenpilistitem,
+				mSimpleAdapter = new SimpleAdapter(Mingxi_ZiJin.this, list_liucheng, R.layout.shenpilistitem,
                         new String[] { "StepName", "CompletedTime1" ,"ReceiveName", "ReceiveTime","Comment1"},
                         new int[] { R.id.StepName, R.id.CompletedTime1 ,R.id.ReceiveName, R.id.ReceiveTime,R.id.Comment1}); 
 				listLiucheng.setAdapter(mSimpleAdapter);
@@ -405,17 +319,17 @@ public class Mingxi extends Activity {
 			else if (msg.what == 2)
 			{
 				progressDialog.dismiss();
-        		Common.showDialog(Mingxi.this,2);
+        		Common.showDialog(Mingxi_ZiJin.this,2);
 			}
 			else if (msg.what == 4)
 			{
 				progressDialog.dismiss();
-        		Common.showDialog(Mingxi.this,4);
+        		Common.showDialog(Mingxi_ZiJin.this,4);
 			}
 			else
 			{
         		progressDialog.dismiss();
-        		Common.showDialog(Mingxi.this,msg.obj.toString());
+        		Common.showDialog(Mingxi_ZiJin.this,msg.obj.toString());
 			}
 		}
 	};
@@ -434,7 +348,7 @@ public class Mingxi extends Activity {
 			{
 				try {	
 						postUrl = "http://"+Common.Date.getIp()+"/wcf/wpost.svc/Wpost/Execute";
-						progressDialog = ProgressDialog.show(Mingxi.this, "正在上传审批信息...", "请稍后...", true, false);					
+						progressDialog = ProgressDialog.show(Mingxi_ZiJin.this, "正在上传审批信息...", "请稍后...", true, false);					
 						//创建一个NameValuePair列表
 						//List<NameValuePair> params = new ArrayList<NameValuePair>();
 //						//将要POST的值加到列表里面来。
@@ -455,7 +369,7 @@ public class Mingxi extends Activity {
 						    .key("Comment").value(edittext_yijian.getText().toString())
 						    .key("InstanceID").value(bundle.getString("InstanceID"))
 						    .key("UserId").value(bundle.getString("userid"))
-						    .key("Title").value(editText_contract_name.getText().toString())
+						    .key("Title").value(bundle.getString("title"))
 						    .key("TaskID").value(bundle.getString("TaskID"))
 						    .endObject();
 						StationPost station = new StationPost(postUrl,vehicle.toString());//new一个对象
@@ -463,13 +377,13 @@ public class Mingxi extends Activity {
 					
 				} catch (Exception e) {
 					progressDialog.dismiss();
-					Common.showDialog(Mingxi.this, e.toString());
+					Common.showDialog(Mingxi_ZiJin.this, e.toString());
 				} 
 			}
 			else
 			{
 				progressDialog.dismiss();
-				Common.showDialog(Mingxi.this, "审批意见不能为空");
+				Common.showDialog(Mingxi_ZiJin.this, "审批意见不能为空");
 			}
 		}
 	}
@@ -517,7 +431,7 @@ public class Mingxi extends Activity {
 				{
 					progressDialog.dismiss();
 				Intent intent = new Intent();
-				intent.setClass(Mingxi.this, NeiRong.class);
+				intent.setClass(Mingxi_ZiJin.this, NeiRong.class);
 				Bundle mBundle = new Bundle();
 				intent.putExtras(mBundle);
 				setResult(200,intent);	
@@ -526,11 +440,12 @@ public class Mingxi extends Activity {
 				else
 				{
 					progressDialog.dismiss();
-					Common.showDialog(Mingxi.this, msg.obj.toString());
+					Common.showDialog(Mingxi_ZiJin.this, msg.obj.toString());
 				}
 			}
 		};
-	}
+}
+	
 	
 	//获得下一步可以选择的人员
 	//调用banDingSpinner重写的方法，获得姓名将GUID隐藏起来。
@@ -599,12 +514,12 @@ public class Mingxi extends Activity {
 				if (msg.what == 2)
 				{
 					progressDialog.dismiss();
-	        		Common.showDialog(Mingxi.this,2);
+	        		Common.showDialog(Mingxi_ZiJin.this,2);
 				}
 				else if (msg.what == 4)
 				{
 					progressDialog.dismiss();
-	        		Common.showDialog(Mingxi.this,"获取下一步人员失败！");
+	        		Common.showDialog(Mingxi_ZiJin.this,"获取下一步人员失败！");
 				}
 				else if (msg.what == 1)
 				{			
@@ -619,6 +534,4 @@ public class Mingxi extends Activity {
 			}
 		};
 	}
-	
-
 }

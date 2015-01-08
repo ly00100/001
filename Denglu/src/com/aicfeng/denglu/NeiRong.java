@@ -279,21 +279,41 @@ public class NeiRong extends Activity {
 			String listtype = listType.getText().toString();
 			Intent intent=new Intent();   
 			 
+			//根据流程ID判断是哪种流程然后对应到activity中
+			if(FlowID.equals("1d80d72d-35e1-4605-af44-0bdfc42d2fde"))//合同流程
+			{
 			//当前的Activity为Test,目标Activity为Name 
-			intent.setClass(NeiRong.this,Mingxi.class);   
-			
-			//从下面这行开始是将数据传给新的Activity,如果不传数据，只是简单的跳转，这几行代码请注释掉   
-			Bundle bundle=new Bundle();   
-			bundle.putString("title",title);   
-			bundle.putString("InstanceID",InstanceID);
-			bundle.putString("FlowID",FlowID);   
-			bundle.putString("GroupID",GroupID); 
-			bundle.putString("StepID",StepID);  
-			bundle.putString("TaskID",TaskID); 
-			bundle.putString("userid", Goden_id);
-			bundle.putString("listtype", listtype);
-			intent.putExtras(bundle);//传数据结束   
-			startActivityForResult(intent,0);
+				intent.setClass(NeiRong.this,Mingxi.class);   
+				//从下面这行开始是将数据传给新的Activity,如果不传数据，只是简单的跳转，这几行代码请注释掉   
+				Bundle bundle=new Bundle();   
+				bundle.putString("title",title);   
+				bundle.putString("InstanceID",InstanceID);
+				bundle.putString("FlowID",FlowID);   
+				bundle.putString("GroupID",GroupID); 
+				bundle.putString("StepID",StepID);  
+				bundle.putString("TaskID",TaskID); 
+				bundle.putString("userid", Goden_id);
+				bundle.putString("listtype", listtype);
+				intent.putExtras(bundle);//传数据结束   
+				startActivityForResult(intent,0);
+			}
+			else if (FlowID.equals("50f4d7ac-01be-49c8-b717-efd3b2f3d81a"))//资金流程
+			{
+				intent.setClass(NeiRong.this,Mingxi_ZiJin.class);
+				//从下面这行开始是将数据传给新的Activity,如果不传数据，只是简单的跳转，这几行代码请注释掉   
+				Bundle bundle=new Bundle();   
+				bundle.putString("title",title);   
+				bundle.putString("InstanceID",InstanceID);
+				bundle.putString("FlowID",FlowID);   
+				bundle.putString("GroupID",GroupID); 
+				bundle.putString("StepID",StepID);  
+				bundle.putString("TaskID",TaskID); 
+				bundle.putString("userid", Goden_id);
+				bundle.putString("listtype", listtype);
+				intent.putExtras(bundle);//传数据结束   
+				startActivityForResult(intent,0);
+			}
+
 		}
 	};
 	
